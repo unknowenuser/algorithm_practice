@@ -9,14 +9,14 @@ public:
         while (j >= 0)
         {
             
-            if (i >= 0 && nums1[i] > nums2[j])
+            if (i >= 0 && nums1[(size_t)i] > nums2[(size_t)j])
             {
-                nums1[k] = nums1[i];
+                nums1[(size_t)k] = nums1[(size_t)i];
                 i--;
             }
             else
             {
-                nums1[k] = nums2[j];
+                nums1[(size_t)k] = nums2[(size_t)j];
                 j--;
             }  
             

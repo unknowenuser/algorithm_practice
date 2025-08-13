@@ -7,13 +7,11 @@ public:
             
             if (i >= 0 && nums1[(size_t)i] > nums2[(size_t)j])
             {
-                nums1[(size_t)k] = nums1[(size_t)i];
-                i--;
+                nums1[(size_t)k--] = nums1[(size_t)i--];
             }
             else
             {
-                nums1[(size_t)k] = nums2[(size_t)j];
-                j--;
+                nums1[(size_t)k--] = nums2[(size_t)j--];
             }  
             
         }

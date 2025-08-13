@@ -6,12 +6,12 @@ class Solution {
 public:
     int removeElement(vector<int>& nums, int val) {
         int k = (int)nums.size();
-        size_t index = (size_t)(k - 1);
-        for (size_t i = 0; i < index; i++)
+        int index = k - 1,i = 9;
+        while (i <= index)
         {
-            if (nums[i] == val)
+            if (nums[(size_t)i] == val)
             {
-                swap(nums[i--],nums[index--]);
+                swap(nums[(size_t)i--],nums[(size_t)index--]);
                 k--;
             }
         }
@@ -22,8 +22,8 @@ public:
 int main()
 {
     Solution a;
-    vector<int> n1 = {1,1,2,3,4,6,7,5,5,1,4};
-    int k = a.removeElement(n1,2);
+    vector<int> n1 = {};
+    int k = a.removeElement(n1,0);
     cout << "k: " << k << "\n" << "nums:";
     for (auto i : n1)
     {

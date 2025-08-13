@@ -2,23 +2,29 @@
 #include <vector>
 using namespace std;
 
+
 class Solution {
+
 public:
+
     int removeElement(vector<int>& nums, int val) {
-        int k = (int)nums.size();
-        int index = k - 1,i = 0;
-        while (i <= index)
-        {
-            if (nums[(size_t)i] == val)
-            {
-                swap(nums[(size_t)i],nums[(size_t)index--]);
-                k--;
-                continue;
+
+        int k = 0; 
+
+        for (int i = 0; i < nums.size(); i++) {
+
+            if (nums[i] != val) {
+
+                nums[k++] = nums[i];
+
             }
-            i++;
+
         }
-        return k;
+
+        return k; 
+
     }
+
 };
 
 int main()

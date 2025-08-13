@@ -19,7 +19,7 @@ public:
                 twice_checker = i;
             }
         }
-        if (nums[twice_checker] == nums[twice_checker + 1])
+        if (nums.size() - 1 > twice_checker)
         {
             nums[++index] = nums[twice_checker];
         }

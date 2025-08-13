@@ -1,21 +1,14 @@
 class Solution {
 public:
     int removeDuplicates(vector<int>& nums) {
-        if(nums.size() == 0)
+        size_t index = 0;
+        for (size_t i = 1; i < nums.size(); i++)
         {
-            return 0;
-        }
-        vector<int> result = {nums[0]};
-        result.reserve(nums.size());
-        for (size_t i = 0; i < nums.size(); i++)
-        {
-            if (result[result.size()-1] != nums[i])
+            if (nums[index] != nums[i])
             {
-                result.push_back(nums[i]);
+                nums[++index] = nums[i];
             }
         }
-        result.shrink_to_fit();
-        nums = move(result);
-        return (int)nums.size();
+        return index + 1;
     }
 };

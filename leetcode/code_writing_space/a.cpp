@@ -5,14 +5,17 @@ using namespace std;
 class Solution {
 public:
     int removeElement(vector<int>& nums, int val) {
-        for (size_t i = 0; i < nums.size(); i++)
+        int k = (int)nums.size();
+        size_t index = (size_t)(k - 1);
+        for (size_t i = 0; i < index; i++)
         {
             if (nums[i] == val)
             {
-                nums[i] = 100;
+                swap(nums[i--],nums[index--]);
+                k--;
             }
-            
         }
+        return k;
     }
 };
 

@@ -4,31 +4,27 @@ using namespace std;
 
 class Solution {
 public:
-    void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {
-        int i = m - 1,j = n - 1,k = m + n - 1; //i nums1 j nums2 k nums1+nums2
-        while (j >= 0)
+    int removeElement(vector<int>& nums, int val) {
+        for (size_t i = 0; i < nums.size(); i++)
         {
-            
-            if (i >= 0 && nums1[(size_t)i] > nums2[(size_t)j])
+            if (nums[i] == val)
             {
-                nums1[(size_t)k] = nums1[(size_t)i];
-                i--;
+                nums[i] = 100;
             }
-            else
-            {
-                nums1[(size_t)k] = nums2[(size_t)j];
-                j--;
-            }  
             
         }
     }
-        
 };
 
 int main()
 {
     Solution a;
-    vector<int> n1 = {10,60,70,0,0,0},n2 = {2,5,6};
-    a.merge(n1,3,n2,3);
+    vector<int> n1 = {1,1,2,3,4,6,7,5,5,1,4};
+    int k = a.removeElement(n1,2);
+    cout << "k: " << k << "\n" << "nums:";
+    for (auto i : n1)
+    {
+        cout << " " << i;
+    }
     return 0;
 }

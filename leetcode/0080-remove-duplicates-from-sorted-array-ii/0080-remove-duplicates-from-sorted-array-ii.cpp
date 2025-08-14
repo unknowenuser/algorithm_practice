@@ -1,23 +1,14 @@
 class Solution {
 public:
     int removeDuplicates(vector<int>& nums) {
-        size_t index = 0,twice_checker = 0;
-        for (size_t i = 1; i < nums.size(); i++)
+    size_t j = 0;
+        for (size_t i = 0; i < nums.size(); i++)
         {
-            if (nums[index] != nums[i])
+            if (i == 0 || i == 1 || nums[j - 2] != nums[i])
             {
-                if (nums[twice_checker] == nums[twice_checker + 1])
-                {
-                    nums[++index] = nums[i - 1];
-                }
-                nums[++index] = nums[i];
-                twice_checker = i;
+                nums[j++] = nums[i];
             }
         }
-        if (nums.size() - 1 > twice_checker)
-        {
-            nums[++index] = nums[twice_checker];
-        }
-        return (int)(index + 1);
+        return int(j);
     }
 };

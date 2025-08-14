@@ -6,30 +6,24 @@ using namespace std;
 
 class Solution {
 public:
-    int maxProfit(vector<int>& prices) {
-        int max = 0;
-        for (size_t i = 0; i < prices.size(); i++)
-        {
-            for (size_t j = i + 1; j < prices.size(); j++)
-            {
-                if (prices[j] - prices[i] > max)
-                {
-                    max = prices[j] - prices[i];
-                }
+    int maxProfit(std::vector<int>& prices) {
+        int buy = prices[0];
+        int profit = 0;
+        for (int i = 1; i < prices.size(); i++) {
+            if (prices[i] < buy) {
+                buy = prices[i];
+            } else if (prices[i] - buy > profit) {
+                profit = prices[i] - buy;
             }
         }
-        if (max < 0)
-        {
-            return 0;
-        }
-        return max;
+        return profit;
     }
 };
 
 int main()
 {
     Solution a;
-    vector<int> n1 = {9,10,13,7,6,25,5,1,3,6,7,8,9};
+    vector<int> n1 = {1,2};
     int k = a.maxProfit(n1);
     cout << k << "\n";
     for (auto i : n1)

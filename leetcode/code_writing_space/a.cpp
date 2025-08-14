@@ -1,38 +1,37 @@
 #include <iostream>
 #include <vector>
+#include <algorithm>
 using namespace std;
 
 
 class Solution {
 public:
-    int removeDuplicates(vector<int>& nums) {
-        size_t index = 0,twice_checker = 0;
-        for (size_t i = 1; i < nums.size(); i++)
+    int maxProfit(vector<int>& prices) {
+        int max = 0;
+        for (size_t i = 0; i < prices.size(); i++)
         {
-            if (nums[index] != nums[i])
+            for (size_t j = i + 1; j < prices.size(); j++)
             {
-                if (nums[twice_checker] == nums[twice_checker + 1])
+                if (prices[j] - prices[i] > max)
                 {
-                    nums[++index] = nums[i - 1];
+                    max = prices[j] - prices[i];
                 }
-                nums[++index] = nums[i];
-                twice_checker = i;
             }
         }
-        if (nums.size() - 1 > twice_checker)
+        if (max < 0)
         {
-            nums[++index] = nums[twice_checker];
+            return 0;
         }
-        return (int)(index + 1);
+        return max;
     }
 };
 
 int main()
 {
     Solution a;
-    vector<int> n1 = {0,0,0,1,2,3,3,3,4,5,6,6,7,7,7,8,9,10,10,10};
-    int k = a.removeDuplicates(n1);
-    cout << "k: " << k << "\n" << "nums:";
+    vector<int> n1 = {9,10,13,7,6,25,5,1,3,6,7,8,9};
+    int k = a.maxProfit(n1);
+    cout << k << "\n";
     for (auto i : n1)
     {
         cout << " " << i;

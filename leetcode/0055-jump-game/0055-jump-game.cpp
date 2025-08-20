@@ -38,7 +38,7 @@ public:
                 {
                     if (i - j < nums[j])
                     {
-                        i = j - 1;
+                        i = j;
                         break;
                     }
                 }

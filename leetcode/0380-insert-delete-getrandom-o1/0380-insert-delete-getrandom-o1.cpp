@@ -1,32 +1,49 @@
 class RandomizedSet {
-    std::unordered_map<int, int> valToIndex;
-    std::vector<int> values;
-
+    vector<int> v;
+    unordered_map<int,int> mp;
 public:
-    RandomizedSet() {}
+   
+    RandomizedSet() {
+    }
 
+    bool search(int val){
+
+         if(mp.find(val)!=mp.end())
+            return true;
+         return false;
+
+    }
+
+    
     bool insert(int val) {
-        if (valToIndex.count(val)) return false;
-        valToIndex[val] = values.size();
-        values.push_back(val);
+
+        if(search(val))
+            return false;
+
+        v.push_back(val);
+        mp[val] = v.size()-1;
         return true;
     }
 
+    
     bool remove(int val) {
-        if (!valToIndex.count(val)) return false;
-        int idx = valToIndex[val];
-        int last = values.back();
-        values[idx] = last;
-        valToIndex[last] = idx;
-        values.pop_back();
-        valToIndex.erase(val);
+
+        if(!search(val))
+            return false;
+
+       
+        auto it = mp.find(val);
+        v[it->second] = v.back();
+        v.pop_back();
+        mp[v[it->second]] = it->second;
+        mp.erase(val);
         return true;
     }
 
+   
     int getRandom() {
-        std::random_device rd;
-        std::mt19937 gen(rd());
-        std::uniform_int_distribution<int> dis(0, static_cast<int>(values.size()) - 1);
-        return values[rand() % values.size()];
+
+        return v[rand()%v.size()];
     }
 };
+

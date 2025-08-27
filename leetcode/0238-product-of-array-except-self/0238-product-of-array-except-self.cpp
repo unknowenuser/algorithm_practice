@@ -1,34 +1,17 @@
 class Solution {
 public:
-    std::vector<int> productExceptSelf(std::vector<int>& nums) {
-        int product_all = 1;
-        std::vector<int> zeros;
-        for (size_t i = 0; i < nums.size(); ++i)
-        {
-            if (nums[i] == 0)
-            {
-                zeros.push_back(i);
-                continue;
-            }
-            product_all *= nums[i];
+    vector<int> productExceptSelf(vector<int>& nums) {
+        int n = nums.size();
+        vector<int> output(n);
+        output[0] = 1;
+        for(int i=1; i<n; i++){
+            output[i] = output[i-1] * nums[i-1];
         }
-        std::vector<int> result;
-        if (zeros.size() != 0)
-        {
-            for (size_t i = 0; i < nums.size(); i++)
-            {
-                result.push_back(0);
-            }
-            if (zeros.size() == 1)
-            {
-                result[zeros[0]] = product_all;
-            }
-            return result;
+        int right = 1;
+        for(int i=n-1; i>=0; i--){
+            output[i] *= right;
+            right *= nums[i];
         }
-        for (size_t i = 0; i < nums.size(); i++)
-        {
-            result.push_back(product_all / nums[i]);
-        }
-       return result; 
+        return output;
     }
 };

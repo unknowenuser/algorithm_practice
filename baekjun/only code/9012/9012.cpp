@@ -8,6 +8,7 @@ int main()
     std::cout.tie(0);
     size_t n;
     std::string ps;
+    ps.reserve(51);
     std::cin >> n;
     for (size_t i = 0; i < n; i++)
     {
@@ -18,21 +19,25 @@ int main()
             switch (j)
             {
             case '(':
-                --temp;
+                ++temp;
                 break;
             default:
-                ++temp;
+                --temp;
+                break;
+            }
+            if (temp == -1)
+            {
                 break;
             }
         }
         switch (temp)
         {
         case 0:
-            std::cout << "YES";
+            std::cout << "YES\n";
             break;
         
         default:
-            std::cout << "NO";
+            std::cout << "NO\n";
             break;
         }
         

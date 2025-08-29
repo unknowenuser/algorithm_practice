@@ -5,12 +5,10 @@ public:
         int profit = 0;
         
         for (size_t i = 1; i < prices.size(); i++) {
-            if (prices[i] < buy) {
-                buy = prices[i];
-            } else if (prices[i] - buy > 0) {
+            if (prices[i] > buy) {
                 profit += (prices[i] - buy);
-                buy = prices[i];
             }
+            buy = prices[i];
         }
         return profit;
     }

@@ -1,8 +1,6 @@
 #include <iostream>
 #include <cstring>
-#include <cctype>
-#include <cmath>
-#include <string>
+
 int main()
 {
     std::ios_base::sync_with_stdio(false);
